@@ -1447,7 +1447,7 @@
                     </div>
                     <div class="portfolio-content">
                         <h3 class="portfolio-title">Hotel Guest Services 🛎️</h3>
-                        <p class="portfolio-description">Managed guest check-ins and personalized services at Serena Hotel, ensuring a 95% satisfaction rate. <a href="#" class="live-preview" data-preview="https://abdulsamad.github.io/hotel-services/">View Project</a></p>
+                        <p class="portfolio-description">Managed guest check-ins and personalized services at Serena Hotel, ensuring a 95% satisfaction rate. <a href="#" class="live-preview" data-preview="/hotel-services/">View Project</a></p>
                     </div>
                 </div>
                 <div class="portfolio-card">
@@ -1456,7 +1456,7 @@
                     </div>
                     <div class="portfolio-content">
                         <h3 class="portfolio-title">Cultural Tours 🗺️</h3>
-                        <p class="portfolio-description">Led guided tours of historical sites in Punjab, engaging international tourists. <a href="#" class="live-preview" data-preview="https://abdulsamad.github.io/cultural-tours/">View Project</a></p>
+                        <p class="portfolio-description">Led guided tours of historical sites in Punjab, engaging international tourists. <a href="#" class="live-preview" data-preview="/cultural-tours/">View Project</a></p>
                     </div>
                 </div>
                 <div class="portfolio-card">
@@ -1465,7 +1465,7 @@
                     </div>
                     <div class="portfolio-content">
                         <h3 class="portfolio-title">Event Coordination 🎉</h3>
-                        <p class="portfolio-description">Organized weddings and festivals, managing logistics and guest experiences. <a href="#" class="live-preview" data-preview="https://abdulsamad.github.io/event-coordination/">View Project</a></p>
+                        <p class="portfolio-description">Organized weddings and festivals, managing logistics and guest experiences. <a href="#" class="live-preview" data-preview="/event-coordination/">View Project</a></p>
                     </div>
                 </div>
             </div>
@@ -1762,10 +1762,21 @@
                 const previewUrl = button.getAttribute('data-preview');
                 const projectTitle = button.closest('.portfolio-card').querySelector('.portfolio-title').textContent;
 
-                modalTitle.textContent = projectTitle + ' - Live Preview';
-                previewIframe.src = previewUrl;
-                modal.style.display = 'block';
-                document.body.style.overflow = 'hidden';
+                // Check if the preview URL is valid
+                fetch(previewUrl, { method: 'HEAD' })
+                    .then(response => {
+                        if (response.ok) {
+                            modalTitle.textContent = projectTitle + ' - Live Preview';
+                            previewIframe.src = previewUrl;
+                            modal.style.display = 'block';
+                            document.body.style.overflow = 'hidden';
+                        } else {
+                            showToast('Project preview is not available yet. Please check back later.');
+                        }
+                    })
+                    .catch(() => {
+                        showToast('Project preview is not available yet. Please check back later.');
+                    });
             });
         });
 
@@ -1793,10 +1804,27 @@
 <!-- 
     To deploy on GitHub Pages:
     1. Create a GitHub repository (e.g., abdulsamad/portfolio).
-    2. Save this file as index.html in the repository root.
-    3. For portfolio projects, create subdirectories (e.g., hotel-services, cultural-tours, event-coordination) with their own index.html files.
-    4. Update the data-preview attributes in the portfolio section to point to the correct GitHub Pages URLs (e.g., https://abdulsamad.github.io/hotel-services/).
-    5. Push the repository to GitHub.
-    6. Enable GitHub Pages in the repository settings, selecting the main branch and root directory.
-    7. Access the site at https://abdulsamad.github.io/portfolio (replace 'abdulsamad' with your GitHub username).
+    2. Save this file as index.html (lowercase) in the repository root.
+    3. Create subdirectories for portfolio projects (e.g., hotel-services, cultural-tours, event-coordination), each containing an index.html file.
+    4. Example subdirectory structure:
+       /hotel-services/index.html
+       /cultural-tours/index.html
+       /event-coordination/index.html
+    5. Example content for /hotel-services/index.html:
+       <!DOCTYPE html>
+       <html lang="en">
+       <head>
+           <meta charset="UTF-8">
+           <title>Hotel Guest Services</title>
+       </head>
+       <body>
+           <h1>Hotel Guest Services Project</h1>
+           <p>Details about guest services at Serena Hotel.</p>
+       </body>
+       </html>
+    6. Ensure all file and directory names are lowercase to avoid case sensitivity issues.
+    7. Commit and push all files to the GitHub repository.
+    8. Enable GitHub Pages in the repository settings, selecting the main branch and root directory.
+    9. Access the site at https://<your-username>.github.io/portfolio (replace <your-username> with your GitHub username).
+    10. If the portfolio projects are not yet created, the "View Project" links will show a toast notification indicating the preview is unavailable.
 -->
