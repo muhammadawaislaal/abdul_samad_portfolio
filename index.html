@@ -1,0 +1,1528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abdul Samad | Hospitality & Tourism Professional</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3.2.0/dist/email.min.js"></script>
+    <style>
+        :root {
+            --primary: #1E3A8A;
+            --primary-dark: #1E293B;
+            --primary-light: #3B82F6;
+            --secondary: #10B981;
+            --accent: #F59E0B;
+            --dark: #0F172A;
+            --darker: #020617;
+            --light: #F8FAFC;
+            --gray: #64748B;
+            --gray-light: #E2E8F0;
+            --transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            --shadow-lg: 0 35px 60px -15px rgba(0, 0, 0, 0.3);
+            --glass: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
+
+        [data-theme="light"] {
+            --dark: #F8FAFC;
+            --darker: #E2E8F0;
+            --light: #0F172A;
+            --gray: #475569;
+            --gray-light: #1E293B;
+            --glass: rgba(15, 23, 42, 0.05);
+            --glass-border: rgba(15, 23, 42, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, var(--darker) 0%, var(--dark) 100%);
+            color: var(--light);
+            line-height: 1.7;
+            overflow-x: hidden;
+            position: relative;
+            transition: background 0.5s ease, color 0.5s ease;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 10% 20%, rgba(30, 58, 138, 0.1) 0%, transparent 20%),
+                        radial-gradient(circle at 90% 80%, rgba(245, 158, 11, 0.1) 0%, transparent 20%),
+                        radial-gradient(circle at 50% 50%, rgba(16, 185, 129, 0.05) 0%, transparent 30%);
+            z-index: -1;
+        }
+
+        [data-theme="light"] body::before {
+            background: radial-gradient(circle at 10% 20%, rgba(30, 58, 138, 0.05) 0%, transparent 20%),
+                        radial-gradient(circle at 90% 80%, rgba(245, 158, 11, 0.05) 0%, transparent 20%),
+                        radial-gradient(circle at 50% 50%, rgba(16, 185, 129, 0.03) 0%, transparent 30%);
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header-advanced {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            padding-top: 80px;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 10;
+            width: 100%;
+            text-align: center;
+        }
+
+        .profile-advanced {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            margin: 0 auto 40px;
+            perspective: 1200px;
+        }
+
+        .profile-card-3d {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .profile-card-3d:hover {
+            transform: rotateY(15deg) rotateX(10deg) scale(1.05);
+        }
+
+        .profile-front {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .profile-img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            background: transparent;
+            position: relative;
+            z-index: 2;
+            overflow: hidden;
+        }
+
+        .profile-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .profile-title {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .typing-text {
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            text-align: center;
+            min-height: 60px;
+            position: relative;
+        }
+
+        .typing-cursor {
+            display: inline-block;
+            width: 3px;
+            height: 1.2em;
+            background: var(--primary);
+            margin-left: 5px;
+            animation: blink 1s infinite;
+            vertical-align: middle;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 14px 32px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.7s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--light);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-5px);
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(15px);
+            padding: 15px 0;
+            transition: var(--transition);
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        [data-theme="light"] nav {
+            background: rgba(248, 250, 252, 0.8);
+        }
+
+        .nav-scrolled {
+            background: rgba(15, 23, 42, 0.95);
+            padding: 10px 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        [data-theme="light"] .nav-scrolled {
+            background: rgba(248, 250, 252, 0.95);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 900;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 40px;
+        }
+
+        .nav-links a {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+            padding: 5px 0;
+            transition: var(--transition);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after, .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .theme-toggle {
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            width: 50px;
+            height: 26px;
+            border-radius: 50px;
+            position: relative;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            padding: 0 3px;
+        }
+
+        .theme-toggle::before {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--primary);
+            transition: transform 0.3s ease;
+        }
+
+        .theme-toggle.active::before {
+            transform: translateX(24px);
+        }
+
+        .mobile-menu {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            width: 45px;
+            height: 45px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Sections */
+        section {
+            padding: 80px 0;
+            position: relative;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            font-weight: 900;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 15px;
+        }
+
+        .section-title p {
+            font-size: 1.1rem;
+            color: var(--gray);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            border-radius: 2px;
+        }
+
+        /* About Section */
+        .about-advanced {
+            position: relative;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about-text p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .skill-category {
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            padding: 25px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            transition: var(--transition);
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+            background: rgba(30, 58, 138, 0.1);
+        }
+
+        .skill-category h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .skill-category h3 i {
+            color: var(--primary);
+        }
+
+        .skill-list {
+            list-style: none;
+        }
+
+        .skill-list li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .skill-list li::before {
+            content: '▹';
+            color: var(--primary);
+        }
+
+        /* Experience Section */
+        .experience-grid {
+            display: grid;
+            gap: 30px;
+        }
+
+        .experience-item {
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            padding: 25px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            transition: var(--transition);
+        }
+
+        .experience-item:hover {
+            transform: translateY(-5px);
+            background: rgba(30, 58, 138, 0.1);
+        }
+
+        .experience-item h3 {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+        }
+
+        .experience-item .company {
+            font-size: 1.1rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .experience-item .duration {
+            font-size: 0.9rem;
+            color: var(--gray);
+            margin-bottom: 15px;
+        }
+
+        .experience-item ul {
+            list-style: none;
+        }
+
+        .experience-item ul li {
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .experience-item ul li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+        }
+
+        /* Education Section */
+        .education-grid {
+            display: grid;
+            gap: 30px;
+        }
+
+        .education-item {
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            padding: 25px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            transition: var(--transition);
+        }
+
+        .education-item:hover {
+            transform: translateY(-5px);
+            background: rgba(30, 58, 138, 0.1);
+        }
+
+        .education-item h3 {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+        }
+
+        .education-item .institution {
+            font-size: 1.1rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .education-item .duration {
+            font-size: 0.9rem;
+            color: var(--gray);
+            margin-bottom: 15px;
+        }
+
+        /* Contact Section */
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            padding: 25px;
+            border-radius: 15px;
+            transition: var(--transition);
+            backdrop-filter: blur(10px);
+        }
+
+        .contact-item:hover {
+            transform: translateX(10px);
+            background: rgba(30, 58, 138, 0.1);
+        }
+
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .contact-form-advanced {
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            padding: 40px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 15px 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--glass-border);
+            border-radius: 10px;
+            color: var(--light);
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        [data-theme="light"] .form-control {
+            background: rgba(15, 23, 42, 0.05);
+            color: var(--dark);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 0 3px rgba(30, 58, 138, 0.2);
+        }
+
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(2, 6, 23, 0.9);
+            padding: 60px 0 30px;
+            text-align: center;
+            border-top: 1px solid var(--glass-border);
+        }
+
+        [data-theme="light"] footer {
+            background: rgba(226, 232, 240, 0.9);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: var(--gray);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+            padding-left: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 40px 0;
+        }
+
+        .social-link {
+            width: 50px;
+            height: 50px;
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--light);
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+
+        .social-link:hover {
+            background: var(--primary);
+            transform: translateY(-5px) scale(1.1);
+        }
+
+        .copyright {
+            margin-top: 40px;
+            opacity: 0.7;
+            font-size: 0.9rem;
+            padding-top: 20px;
+            border-top: 1px solid var(--glass-border);
+        }
+
+        /* WhatsApp Floating Button */
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 40px;
+            left: 40px;
+            background-color: #25d366;
+            color: #FFF;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 2px 2px 3px rgba(0,0,0,0.3);
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+
+        .whatsapp-float:hover {
+            background-color: #128C7E;
+            transform: scale(1.1);
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            z-index: 999;
+            box-shadow: var(--shadow);
+        }
+
+        .back-to-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-5px);
+            background: var(--primary-dark);
+        }
+
+        /* Toast Notification */
+        .toast {
+            position: fixed;
+            bottom: 100px;
+            right: 30px;
+            background: var(--secondary);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            z-index: 1000;
+            transform: translateX(150%);
+            transition: transform 0.3s ease;
+        }
+
+        .toast.show {
+            transform: translateX(0);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 992px) {
+            .about-content, .contact-content {
+                grid-template-columns: 1fr;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .whatsapp-float {
+                width: 50px;
+                height: 50px;
+                bottom: 20px;
+                left: 20px;
+                font-size: 24px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: rgba(15, 23, 42, 0.95);
+                flex-direction: column;
+                padding: 20px;
+                text-align: center;
+                backdrop-filter: blur(15px);
+                border-top: 1px solid var(--glass-border);
+            }
+
+            [data-theme="light"] .nav-links {
+                background: rgba(248, 250, 252, 0.95);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .mobile-menu {
+                display: flex;
+            }
+
+            .profile-advanced {
+                width: 180px;
+                height: 180px;
+            }
+
+            .profile-img {
+                width: 100%;
+                height: 100%;
+            }
+
+            .profile-title {
+                font-size: 1.1rem;
+            }
+
+            .typing-text {
+                font-size: 1.4rem;
+                min-height: 50px;
+            }
+
+            .header-advanced {
+                padding-top: 60px;
+            }
+
+            section {
+                padding: 60px 0;
+            }
+
+            .section-title h2 {
+                font-size: 2.2rem;
+            }
+
+            .section-title p {
+                font-size: 1rem;
+            }
+
+            .about-text p {
+                font-size: 1rem;
+            }
+
+            .skill-category h3 {
+                font-size: 1.2rem;
+            }
+
+            .experience-item h3, .education-item h3 {
+                font-size: 1.3rem;
+            }
+
+            .contact-item {
+                padding: 20px;
+            }
+
+            .contact-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 1.3rem;
+            }
+
+            .contact-form-advanced {
+                padding: 30px;
+            }
+
+            .form-control {
+                padding: 12px 15px;
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 15px;
+            }
+
+            .profile-advanced {
+                width: 150px;
+                height: 150px;
+            }
+
+            .typing-text {
+                font-size: 1.2rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .btn {
+                padding: 10px 20px;
+                font-size: 0.8rem;
+            }
+
+            .section-title {
+                margin-bottom: 40px;
+            }
+
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+
+            .skills-grid {
+                gap: 15px;
+            }
+
+            .skill-category {
+                padding: 20px;
+            }
+
+            .experience-item, .education-item {
+                padding: 20px;
+            }
+
+            .contact-content {
+                gap: 40px;
+            }
+
+            .contact-item {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .contact-icon {
+                margin-bottom: 10px;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .social-links {
+                gap: 15px;
+            }
+
+            .social-link {
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
+
+            .whatsapp-float {
+                width: 45px;
+                height: 45px;
+                bottom: 15px;
+                left: 15px;
+                font-size: 20px;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .delay-1 { transition-delay: 0.2s; }
+        .delay-2 { transition-delay: 0.4s; }
+        .delay-3 { transition-delay: 0.6s; }
+    </style>
+</head>
+<body>
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/03321997374?text=Hi%20Abdul%20Samad,%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20discuss%20an%20opportunity" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Back to Top Button -->
+    <div class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast"></div>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="container nav-container">
+            <div class="logo">
+                <i class="fas fa-concierge-bell"></i>
+                <span>Abdul Samad</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="nav-actions">
+                <div class="theme-toggle" id="themeToggle">
+                    <i class="fas fa-sun"></i>
+                    <i class="fas fa-moon"></i>
+                </div>
+                <div class="mobile-menu">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <section id="home" class="header-advanced">
+        <div class="container header-content">
+            <div class="profile-advanced">
+                <div class="profile-card-3d">
+                    <div class="profile-front">
+                        <div class="profile-img">
+                            <img src="https://scontent.flhe6-1.fna.fbcdn.net/v/t39.30808-6/491998636_656970820453043_9059130380959894350_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=a5f93a&_nc_ohc=SDDY_dGgXJ4Q7kNvwG8eUZK&_nc_oc=AdmFFBk5IYM_jSl_2yuADxy9j81ikRsc2L1NbdIITCYFL_Jz1emFRfj1AQHNNdSaTZY&_nc_zt=23&_nc_ht=scontent.flhe6-1.fna&_nc_gid=fzbuhnKNp8N7bvdj8NZ28g&oh=00_Afb_5tYaMg3IHTcXYLjcr9Sb6d9zrGMeAWtZxYL07ufu9A&oe=68D9C872" alt="Abdul Samad Avatar">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="typing-text">
+                <span id="typed-text"></span><span class="typing-cursor"></span>
+            </div>
+            <p class="profile-title">Hospitality & Tourism Professional</p>
+            <p class="fade-in-up" style="text-align: center; max-width: 700px; margin: 0 auto 30px; font-size: 1.2rem;">
+                Enthusiastic and customer-focused hospitality professional from Punjab, Pakistan, with strong experience in guest relations, tourism services, and multicultural communication. Passionate about delivering memorable guest experiences in international environments.
+            </p>
+            <div class="cta-buttons fade-in-up delay-1">
+                <a href="#experience" class="btn btn-primary"><i class="fas fa-briefcase"></i> View Experience</a>
+                <a href="#contact" class="btn btn-secondary"><i class="fas fa-paper-plane"></i> Get In Touch</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-advanced">
+        <div class="container">
+            <div class="section-title fade-in-up">
+                <h2>About Me</h2>
+                <p>Discover my passion for hospitality and tourism</p>
+            </div>
+            <div class="about-content">
+                <div class="about-text fade-in-up">
+                    <p>Hello! I'm Abdul Samad, a dedicated hospitality professional from Punjab, Pakistan, with a deep passion for creating exceptional guest experiences. With extensive experience in guest relations, tour management, and event coordination, I thrive in dynamic, multicultural environments where I can connect with people from diverse backgrounds.</p>
+                    <p>My expertise lies in delivering top-notch customer service, resolving guest issues with empathy, and ensuring seamless operations in fast-paced hospitality settings. Fluent in English and proficient in Urdu, I bring strong communication skills and cultural awareness to every role, making guests feel valued and understood.</p>
+                    <p>My goal is to contribute to world-class hotels and tourism companies by delivering exceptional guest experiences and promoting cultural exchange, while growing into a managerial role. I am committed to continuous learning and adapting to the evolving needs of the global hospitality industry.</p>
+                    <div class="skills-grid fade-in-up delay-1">
+                        <div class="skill-category">
+                            <h3><i class="fas fa-users"></i> Core Skills</h3>
+                            <ul class="skill-list">
+                                <li>Guest Relations & Customer Service</li>
+                                <li>Fluent English Communication</li>
+                                <li>Cultural Awareness & Sensitivity</li>
+                                <li>Teamwork & Collaboration</li>
+                                <li>Problem-Solving & Conflict Resolution</li>
+                                <li>Opera PMS & Hospitality Software</li>
+                            </ul>
+                        </div>
+                        <div class="skill-category">
+                            <h3><i class="fas fa-concierge-bell"></i> Specialized Skills</h3>
+                            <ul class="skill-list">
+                                <li>Tour Management & Itinerary Planning</li>
+                                <li>Food & Beverage Service Etiquette</li>
+                                <li>Event Management & Coordination</li>
+                                <li>Multicultural Guest Engagement</li>
+                                <li>Leadership & Staff Training</li>
+                                <li>Empathy & Emotional Intelligence</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-text fade-in-up delay-2">
+                    <p><strong>Career Goal:</strong> My goal is to contribute to world-class hotels and tourism companies by delivering exceptional guest experiences and promoting cultural exchange, while growing into a managerial role.</p>
+                    <p><strong>Soft Skills:</strong> I pride myself on my positive attitude, patience, and flexibility in handling diverse roles and schedules. My leadership skills have been honed through training new staff, and my empathy ensures high guest satisfaction.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="experience-advanced">
+        <div class="container">
+            <div class="section-title fade-in-up">
+                <h2>Work Experience</h2>
+                <p>Practical experience in hospitality and tourism</p>
+            </div>
+            <div class="experience-grid fade-in-up">
+                <div class="experience-item">
+                    <h3>Guest Relations Officer</h3>
+                    <div class="company">Serena Hotel, Lahore</div>
+                    <div class="duration">January 2022 - Present</div>
+                    <ul>
+                        <li>Welcomed and assisted guests, ensuring a warm and professional first impression.</li>
+                        <li>Resolved guest complaints promptly and professionally, achieving a 95% satisfaction rate.</li>
+                        <li>Coordinated with housekeeping and F&B teams to ensure seamless guest experiences.</li>
+                        <li>Utilized Opera PMS for reservations and guest management.</li>
+                    </ul>
+                </div>
+                <div class="experience-item">
+                    <h3>Tour Guide</h3>
+                    <div class="company">Punjab Tourism Agency</div>
+                    <div class="duration">June 2020 - December 2021</div>
+                    <ul>
+                        <li>Designed and led cultural and historical tours across Punjab, including Lahore Fort and Badshahi Mosque.</li>
+                        <li>Engaged with international tourists, providing insights in fluent English.</li>
+                        <li>Ensured safety and satisfaction for groups of up to 30 guests.</li>
+                        <li>Collaborated with local vendors to enhance tour experiences.</li>
+                    </ul>
+                </div>
+                <div class="experience-item">
+                    <h3>Event Coordinator (Volunteer)</h3>
+                    <div class="company">Local Community Events, Punjab</div>
+                    <div class="duration">March 2019 - May 2020</div>
+                    <ul>
+                        <li>Assisted in organizing weddings and cultural festivals for up to 200 guests.</li>
+                        <li>Managed logistics, including catering and venue setup.</li>
+                        <li>Trained a team of 5 volunteers in event setup and guest management.</li>
+                        <li>Ensured smooth execution through proactive problem-solving.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="education-advanced">
+        <div class="container">
+            <div class="section-title fade-in-up">
+                <h2>Education & Training</h2>
+                <p>Academic background and professional certifications</p>
+            </div>
+            <div class="education-grid fade-in-up">
+                <div class="education-item">
+                    <h3>Diploma in Hospitality Management</h3>
+                    <div class="institution">Akhuwat College, Lahore</div>
+                    <div class="duration">2018 - 2020</div>
+                    <p>Completed a comprehensive program covering guest relations, hotel operations, and tourism management.</p>
+                </div>
+                <div class="education-item">
+                    <h3>English Language Proficiency Course</h3>
+                    <div class="institution">Akhuwat College, Lahore</div>
+                    <div class="duration">2017 - 2018</div>
+                    <p>Achieved advanced fluency in English for professional communication in hospitality settings.</p>
+                </div>
+                <div class="education-item">
+                    <h3>Certification in Opera PMS</h3>
+                    <div class="institution">Serena Hotel Training Program</div>
+                    <div class="duration">2022</div>
+                    <p>Trained in using Opera Property Management System for efficient hotel operations.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-advanced">
+        <div class="container">
+            <div class="section-title fade-in-up">
+                <h2>Get In Touch</h2>
+                <p>Let's discuss how I can contribute to your team</p>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info fade-in-up">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div>
+                            <h3>Email</h3>
+                            <p>abdulsamad@example.com</p>
+                            <small>Response within 24 hours</small>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div>
+                            <h3>Phone</h3>
+                            <p>+92 332 199 7374</p>
+                            <small>Mon - Fri, 9:00 AM - 6:00 PM</small>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div>
+                            <h3>Location</h3>
+                            <p>Punjab, Pakistan</p>
+                            <small>Available for international opportunities</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form-advanced fade-in-up delay-1">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Your Name</label>
+                            <input type="text" id="name" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Your Email</label>
+                            <input type="email" id="email" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Opportunity Type</label>
+                            <select id="subject" class="form-control" required>
+                                <option value="">Select an opportunity</option>
+                                <option value="hospitality">Hospitality Role</option>
+                                <option value="tourism">Tourism Role</option>
+                                <option value="event">Event Management</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" class="form-control" placeholder="Tell me about the opportunity..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message <i class="fas fa-paper-plane"></i></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Abdul Samad</h3>
+                    <p>Hospitality & Tourism Professional dedicated to exceptional guest experiences.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#experience">Experience</a></li>
+                        <li><a href="#education">Education</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Info</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-envelope"></i> abdulsamad@example.com</li>
+                        <li><i class="fas fa-phone"></i> +92 332 199 7374</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Punjab, Pakistan</li>
+                    </ul>
+                </div>
+            </div>
+            <p class="copyright">© 2025 Abdul Samad. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize EmailJS (Replace with your own keys from https://www.emailjs.com/)
+        emailjs.init("YOUR_PUBLIC_KEY");
+
+        // Mobile Menu Toggle
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
+
+        mobileMenu.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Navbar background on scroll
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                nav.classList.add('nav-scrolled');
+            } else {
+                nav.classList.remove('nav-scrolled');
+            }
+
+            // Back to top button
+            const backToTop = document.querySelector('.back-to-top');
+            if (window.scrollY > 500) {
+                backToTop.classList.add('active');
+            } else {
+                backToTop.classList.remove('active');
+            }
+        });
+
+        // Back to top functionality
+        document.querySelector('.back-to-top').addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Active nav link on scroll
+        window.addEventListener('scroll', () => {
+            let current = '';
+            const sections = document.querySelectorAll('section');
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (scrollY >= (sectionTop - 100)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Form submission with EmailJS
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const originalText = submitBtn.innerHTML;
+
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+            submitBtn.disabled = true;
+
+            const templateParams = {
+                from_name: document.getElementById('name').value,
+                from_email: document.getElementById('email').value,
+                opportunity_type: document.getElementById('subject').value,
+                message: document.getElementById('message').value
+            };
+
+            emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', templateParams)
+                .then(function(response) {
+                    submitBtn.innerHTML = '<i class="fas fa-check"></i> Message Sent!';
+                    submitBtn.style.background = 'var(--secondary)';
+
+                    showToast('Message sent successfully! I will get back to you soon.');
+
+                    setTimeout(() => {
+                        submitBtn.innerHTML = originalText;
+                        submitBtn.disabled = false;
+                        submitBtn.style.background = '';
+                        document.getElementById('contactForm').reset();
+                    }, 3000);
+                }, function(error) {
+                    submitBtn.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Failed to Send';
+                    submitBtn.style.background = '#EF4444';
+
+                    showToast('Failed to send message. Please try again or contact me directly.');
+
+                    setTimeout(() => {
+                        submitBtn.innerHTML = originalText;
+                        submitBtn.disabled = false;
+                        submitBtn.style.background = '';
+                    }, 3000);
+                });
+        });
+
+        // Toast notification function
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.classList.add('show');
+
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 5000);
+        }
+
+        // Typing effect
+        const typedTextSpan = document.getElementById('typed-text');
+        const textArray = [
+            "Hospitality Professional",
+            "Tourism Specialist",
+            "Guest Relations Expert",
+            "Event Coordinator"
+        ];
+        let textArrayIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+
+        function type() {
+            const currentText = textArray[textArrayIndex];
+
+            if (isDeleting) {
+                typedTextSpan.textContent = currentText.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                typedTextSpan.textContent = currentText.substring(0, charIndex + 1);
+                charIndex++;
+            }
+
+            if (!isDeleting && charIndex === currentText.length) {
+                isDeleting = true;
+                setTimeout(type, 1500);
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                textArrayIndex = (textArrayIndex + 1) % textArray.length;
+                setTimeout(type, 500);
+            } else {
+                setTimeout(type, isDeleting ? 50 : 100);
+            }
+        }
+
+        setTimeout(type, 1000);
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in-up').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Theme toggle functionality
+        const themeToggle = document.getElementById('themeToggle');
+        const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+
+        const currentTheme = localStorage.getItem('theme') || (prefersDarkScheme.matches ? 'dark' : 'light');
+        document.documentElement.setAttribute('data-theme', currentTheme);
+
+        if (currentTheme === 'light') {
+            themeToggle.classList.add('active');
+        }
+
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+
+            themeToggle.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>
