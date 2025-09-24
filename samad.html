@@ -1802,15 +1802,11 @@
 </body>
 </html>
 <!-- 
-    To deploy on GitHub Pages:
-    1. Create a GitHub repository (e.g., abdulsamad/portfolio).
-    2. Save this file as index.html (lowercase) in the repository root.
-    3. Create subdirectories for portfolio projects (e.g., hotel-services, cultural-tours, event-coordination), each containing an index.html file.
-    4. Example subdirectory structure:
-       /hotel-services/index.html
-       /cultural-tours/index.html
-       /event-coordination/index.html
-    5. Example content for /hotel-services/index.html:
+    To deploy on GitHub Pages and resolve 404 errors:
+    1. Create a GitHub repository (e.g., <your-username>/portfolio).
+    2. Save this file as `index.html` (lowercase) in the repository root.
+    3. Create subdirectories for portfolio projects (lowercase): `hotel-services`, `cultural-tours`, `event-coordination`.
+    4. In each subdirectory, create an `index.html` file (lowercase). Example for `hotel-services/index.html`:
        <!DOCTYPE html>
        <html lang="en">
        <head>
@@ -1822,9 +1818,24 @@
            <p>Details about guest services at Serena Hotel.</p>
        </body>
        </html>
+    5. Repeat for `cultural-tours/index.html` and `event-coordination/index.html` with relevant content.
     6. Ensure all file and directory names are lowercase to avoid case sensitivity issues.
-    7. Commit and push all files to the GitHub repository.
-    8. Enable GitHub Pages in the repository settings, selecting the main branch and root directory.
-    9. Access the site at https://<your-username>.github.io/portfolio (replace <your-username> with your GitHub username).
-    10. If the portfolio projects are not yet created, the "View Project" links will show a toast notification indicating the preview is unavailable.
+    7. Verify file permissions (should be public or readable by GitHub Pages).
+    8. Commit and push all files to the GitHub repository using Git:
+       ```bash
+       git add .
+       git commit -m "Add portfolio files and project subdirectories"
+       git push origin main
+       ```
+    9. Enable GitHub Pages in the repository settings:
+       - Go to Settings > Pages.
+       - Select the `main` branch and `/ (root)` directory.
+       - Save and wait a few minutes for deployment.
+    10. Access the site at `https://<your-username>.github.io/portfolio`.
+    11. If portfolio projects are not yet created, clicking "View Project" will show a toast notification. Add the subdirectories later to enable previews.
+    12. If the 404 persists, check:
+        - Repository name matches `<your-username>/portfolio`.
+        - `index.html` exists in the root and subdirectories.
+        - GitHub Pages is enabled and pointing to the correct branch.
+        - Clear browser cache or try incognito mode.
 -->
