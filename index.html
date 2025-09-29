@@ -354,7 +354,6 @@
             width: 45px;
             height: 45px;
             border-radius: 10px;
-            display: flex;
             align-items: center;
             justify-content: center;
         }
@@ -808,7 +807,58 @@
             transform: translateX(0);
         }
 
-        /* Responsive Design */
+        /* Hospitality Professional Touches */
+        .hospitality-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, var(--accent), #EAB308);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            box-shadow: 0 5px 15px rgba(245, 158, 11, 0.3);
+            z-index: 10;
+        }
+
+        .service-icons {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 40px 0;
+            flex-wrap: wrap;
+        }
+
+        .service-icon {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            padding: 20px;
+            border-radius: 15px;
+            width: 150px;
+            transition: var(--transition);
+        }
+
+        .service-icon:hover {
+            transform: translateY(-10px);
+            background: rgba(30, 58, 138, 0.1);
+        }
+
+        .service-icon i {
+            font-size: 2.5rem;
+            color: var(--primary);
+        }
+
+        .service-icon span {
+            font-weight: 600;
+            text-align: center;
+        }
+
+        /* Ultra Mobile Responsive Design */
         @media (max-width: 1200px) {
             .footer-content {
                 grid-template-columns: repeat(2, 1fr);
@@ -925,9 +975,22 @@
                 padding: 12px 15px;
                 font-size: 0.9rem;
             }
+
+            .service-icons {
+                gap: 15px;
+            }
+
+            .service-icon {
+                width: 130px;
+                padding: 15px;
+            }
+
+            .service-icon i {
+                font-size: 2rem;
+            }
         }
 
-        @media (max-width: 480px) {
+        @media (max-width: 576px) {
             .container {
                 padding: 0 15px;
             }
@@ -939,16 +1002,21 @@
 
             .typing-text {
                 font-size: 1.2rem;
+                min-height: 45px;
             }
 
             .cta-buttons {
                 flex-direction: column;
                 gap: 15px;
+                align-items: center;
             }
 
             .btn {
                 padding: 10px 20px;
                 font-size: 0.8rem;
+                width: 100%;
+                max-width: 250px;
+                justify-content: center;
             }
 
             .section-title {
@@ -978,6 +1046,7 @@
             .contact-item {
                 flex-direction: column;
                 text-align: center;
+                gap: 15px;
             }
 
             .contact-icon {
@@ -1005,6 +1074,53 @@
                 bottom: 15px;
                 left: 15px;
                 font-size: 20px;
+            }
+
+            .service-icons {
+                gap: 10px;
+            }
+
+            .service-icon {
+                width: calc(50% - 10px);
+                padding: 15px 10px;
+            }
+
+            .service-icon i {
+                font-size: 1.8rem;
+            }
+
+            .service-icon span {
+                font-size: 0.9rem;
+            }
+
+            .hospitality-badge {
+                top: 10px;
+                right: 10px;
+                font-size: 0.8rem;
+                padding: 6px 12px;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .profile-advanced {
+                width: 130px;
+                height: 130px;
+            }
+
+            .typing-text {
+                font-size: 1.1rem;
+            }
+
+            .section-title h2 {
+                font-size: 1.6rem;
+            }
+
+            .service-icon {
+                width: 100%;
+            }
+
+            .logo {
+                font-size: 1.5rem;
             }
         }
 
@@ -1077,13 +1193,18 @@
     </nav>
 
     <!-- Header -->
+     <br>
+     <br>
+     <br>
+     <br>
     <section id="home" class="header-advanced">
+        <div class="hospitality-badge">Hospitality Professional</div>
         <div class="container header-content">
             <div class="profile-advanced">
                 <div class="profile-card-3d">
                     <div class="profile-front">
                         <div class="profile-img">
-                            <img src="https://scontent.flhe6-1.fna.fbcdn.net/v/t39.30808-6/491998636_656970820453043_9059130380959894350_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=a5f93a&_nc_ohc=SDDY_dGgXJ4Q7kNvwG8eUZK&_nc_oc=AdmFFBk5IYM_jSl_2yuADxy9j81ikRsc2L1NbdIITCYFL_Jz1emFRfj1AQHNNdSaTZY&_nc_zt=23&_nc_ht=scontent.flhe6-1.fna&_nc_gid=fzbuhnKNp8N7bvdj8NZ28g&oh=00_Afb_5tYaMg3IHTcXYLjcr9Sb6d9zrGMeAWtZxYL07ufu9A&oe=68D9C872" alt="Abdul Samad Avatar">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLeqGG649wLxbIvrm3tqM2LJwGz7clJ7citQ&s" alt="Abdul Samad Avatar">
                         </div>
                     </div>
                 </div>
@@ -1095,7 +1216,28 @@
             <p class="fade-in-up" style="text-align: center; max-width: 700px; margin: 0 auto 30px; font-size: 1.2rem;">
                 Enthusiastic and customer-focused hospitality professional from Punjab, Pakistan, with strong experience in guest relations, tourism services, and multicultural communication. Passionate about delivering memorable guest experiences in international environments.
             </p>
-            <div class="cta-buttons fade-in-up delay-1">
+            
+            <!-- Service Icons -->
+            <div class="service-icons fade-in-up delay-1">
+                <div class="service-icon">
+                    <i class="fas fa-hotel"></i>
+                    <span>Hotel Operations</span>
+                </div>
+                <div class="service-icon">
+                    <i class="fas fa-users"></i>
+                    <span>Guest Relations</span>
+                </div>
+                <div class="service-icon">
+                    <i class="fas fa-map-marked-alt"></i>
+                    <span>Tour Management</span>
+                </div>
+                <div class="service-icon">
+                    <i class="fas fa-calendar-alt"></i>
+                    <span>Event Planning</span>
+                </div>
+            </div>
+            
+            <div class="cta-buttons fade-in-up delay-2">
                 <a href="#experience" class="btn btn-primary"><i class="fas fa-briefcase"></i> View Experience</a>
                 <a href="#contact" class="btn btn-secondary"><i class="fas fa-paper-plane"></i> Get In Touch</a>
             </div>
@@ -1525,6 +1667,4 @@
         });
     </script>
 </body>
-
 </html>
-
