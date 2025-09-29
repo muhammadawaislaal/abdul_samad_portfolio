@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Abdul Samad | Hospitality & Tourism Professional</title>
+    <title>Abdul Samad | Hospitality & Tourism Graduate</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
@@ -858,9 +858,58 @@
             text-align: center;
         }
 
+        /* Fresher Highlights */
+        .fresher-highlights {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .highlight-card {
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            transition: var(--transition);
+        }
+
+        .highlight-card:hover {
+            transform: translateY(-10px);
+            background: rgba(30, 58, 138, 0.1);
+        }
+
+        .highlight-card i {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .highlight-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+        }
+
+        .fresher-badge {
+            background: linear-gradient(135deg, var(--secondary), #059669);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
         /* Ultra Mobile Responsive Design */
         @media (max-width: 1200px) {
             .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .fresher-highlights {
                 grid-template-columns: repeat(2, 1fr);
             }
         }
@@ -988,6 +1037,19 @@
             .service-icon i {
                 font-size: 2rem;
             }
+
+            .fresher-highlights {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .highlight-card {
+                padding: 25px;
+            }
+
+            .highlight-card i {
+                font-size: 2.5rem;
+            }
         }
 
         @media (max-width: 576px) {
@@ -1099,6 +1161,18 @@
                 font-size: 0.8rem;
                 padding: 6px 12px;
             }
+
+            .highlight-card {
+                padding: 20px;
+            }
+
+            .highlight-card i {
+                font-size: 2rem;
+            }
+
+            .highlight-card h3 {
+                font-size: 1.1rem;
+            }
         }
 
         @media (max-width: 400px) {
@@ -1176,8 +1250,8 @@
             <ul class="nav-links">
                 <li><a href="#home" class="active">Home</a></li>
                 <li><a href="#about">About</a></li>
-                <li><a href="#experience">Experience</a></li>
                 <li><a href="#education">Education</a></li>
+                <li><a href="#experience">College Activities</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
             <div class="nav-actions">
@@ -1193,12 +1267,12 @@
     </nav>
 
     <!-- Header -->
-     <br>
+    <br>
      <br>
      <br>
      <br>
     <section id="home" class="header-advanced">
-        <div class="hospitality-badge">Hospitality Professional</div>
+        <div class="hospitality-badge">Recent Graduate 2025</div>
         <div class="container header-content">
             <div class="profile-advanced">
                 <div class="profile-card-3d">
@@ -1212,9 +1286,9 @@
             <div class="typing-text">
                 <span id="typed-text"></span><span class="typing-cursor"></span>
             </div>
-            <p class="profile-title">Hospitality & Tourism Professional</p>
+            <p class="profile-title">Hospitality & Tourism Graduate</p>
             <p class="fade-in-up" style="text-align: center; max-width: 700px; margin: 0 auto 30px; font-size: 1.2rem;">
-                Enthusiastic and customer-focused hospitality professional from Punjab, Pakistan, with strong experience in guest relations, tourism services, and multicultural communication. Passionate about delivering memorable guest experiences in international environments.
+                Recent hospitality graduate from Punjab, Pakistan, with hands-on college experience in guest relations, event coordination, and tourism services. Eager to apply my education and passion for creating exceptional guest experiences in a professional hospitality environment.
             </p>
             
             <!-- Service Icons -->
@@ -1229,7 +1303,7 @@
                 </div>
                 <div class="service-icon">
                     <i class="fas fa-map-marked-alt"></i>
-                    <span>Tour Management</span>
+                    <span>Tourism Services</span>
                 </div>
                 <div class="service-icon">
                     <i class="fas fa-calendar-alt"></i>
@@ -1238,7 +1312,7 @@
             </div>
             
             <div class="cta-buttons fade-in-up delay-2">
-                <a href="#experience" class="btn btn-primary"><i class="fas fa-briefcase"></i> View Experience</a>
+                <a href="#education" class="btn btn-primary"><i class="fas fa-graduation-cap"></i> View Education</a>
                 <a href="#contact" class="btn btn-secondary"><i class="fas fa-paper-plane"></i> Get In Touch</a>
             </div>
         </div>
@@ -1249,14 +1323,34 @@
         <div class="container">
             <div class="section-title fade-in-up">
                 <h2>About Me</h2>
-                <p>Discover my passion for hospitality and tourism</p>
+                <p>Passionate hospitality graduate ready to launch my career</p>
             </div>
             <div class="about-content">
                 <div class="about-text fade-in-up">
-                    <p>Hello! I'm Abdul Samad, a dedicated hospitality professional from Punjab, Pakistan, with a deep passion for creating exceptional guest experiences. With extensive experience in guest relations, tour management, and event coordination, I thrive in dynamic, multicultural environments where I can connect with people from diverse backgrounds.</p>
-                    <p>My expertise lies in delivering top-notch customer service, resolving guest issues with empathy, and ensuring seamless operations in fast-paced hospitality settings. Fluent in English and proficient in Urdu, I bring strong communication skills and cultural awareness to every role, making guests feel valued and understood.</p>
-                    <p>My goal is to contribute to world-class hotels and tourism companies by delivering exceptional guest experiences and promoting cultural exchange, while growing into a managerial role. I am committed to continuous learning and adapting to the evolving needs of the global hospitality industry.</p>
-                    <div class="skills-grid fade-in-up delay-1">
+                    <p>Hello! I'm Abdul Samad, a recent hospitality graduate from Punjab, Pakistan, with a deep passion for creating exceptional guest experiences. Through my academic studies and hands-on college activities, I've developed strong skills in guest relations, event coordination, and tourism services.</p>
+                    <p>My education has provided me with comprehensive knowledge of hospitality operations, customer service excellence, and cultural awareness. I'm fluent in English and proficient in Urdu, allowing me to connect with diverse guests and provide outstanding service.</p>
+                    <p>As a fresh graduate, I bring enthusiasm, adaptability, and a strong foundation in hospitality principles. I'm eager to apply my knowledge in a professional setting and contribute to creating memorable experiences for guests while continuing to learn and grow in the industry.</p>
+                    
+                    <!-- Fresher Highlights -->
+                    <div class="fresher-highlights fade-in-up delay-1">
+                        <div class="highlight-card">
+                            <i class="fas fa-graduation-cap"></i>
+                            <h3>Recent Graduate</h3>
+                            <p>Completed comprehensive hospitality education in 2025 with strong academic performance.</p>
+                        </div>
+                        <div class="highlight-card">
+                            <i class="fas fa-lightbulb"></i>
+                            <h3>Quick Learner</h3>
+                            <p>Eager to apply theoretical knowledge in practical settings and adapt to new environments.</p>
+                        </div>
+                        <div class="highlight-card">
+                            <i class="fas fa-hands-helping"></i>
+                            <h3>Team Player</h3>
+                            <p>Collaborative approach with excellent communication skills and cultural sensitivity.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="skills-grid fade-in-up delay-2">
                         <div class="skill-category">
                             <h3><i class="fas fa-users"></i> Core Skills</h3>
                             <ul class="skill-list">
@@ -1264,71 +1358,27 @@
                                 <li>Fluent English Communication</li>
                                 <li>Cultural Awareness & Sensitivity</li>
                                 <li>Teamwork & Collaboration</li>
-                                <li>Problem-Solving & Conflict Resolution</li>
-                                <li>Opera PMS & Hospitality Software</li>
+                                <li>Problem-Solving & Adaptability</li>
+                                <li>Hospitality Software Knowledge</li>
                             </ul>
                         </div>
                         <div class="skill-category">
                             <h3><i class="fas fa-concierge-bell"></i> Specialized Skills</h3>
                             <ul class="skill-list">
-                                <li>Tour Management & Itinerary Planning</li>
-                                <li>Food & Beverage Service Etiquette</li>
-                                <li>Event Management & Coordination</li>
+                                <li>Event Planning & Coordination</li>
+                                <li>Food & Beverage Service Basics</li>
+                                <li>Tourism & Hospitality Principles</li>
                                 <li>Multicultural Guest Engagement</li>
-                                <li>Leadership & Staff Training</li>
+                                <li>Hospitality Industry Knowledge</li>
                                 <li>Empathy & Emotional Intelligence</li>
                             </ul>
                         </div>
                     </div>
                 </div>
-                <div class="about-text fade-in-up delay-2">
-                    <p><strong>Career Goal:</strong> My goal is to contribute to world-class hotels and tourism companies by delivering exceptional guest experiences and promoting cultural exchange, while growing into a managerial role.</p>
-                    <p><strong>Soft Skills:</strong> I pride myself on my positive attitude, patience, and flexibility in handling diverse roles and schedules. My leadership skills have been honed through training new staff, and my empathy ensures high guest satisfaction.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Experience Section -->
-    <section id="experience" class="experience-advanced">
-        <div class="container">
-            <div class="section-title fade-in-up">
-                <h2>Work Experience</h2>
-                <p>Practical experience in hospitality and tourism</p>
-            </div>
-            <div class="experience-grid fade-in-up">
-                <div class="experience-item">
-                    <h3>Guest Relations Officer</h3>
-                    <div class="company">Serena Hotel, Lahore</div>
-                    <div class="duration">January 2022 - Present</div>
-                    <ul>
-                        <li>Welcomed and assisted guests, ensuring a warm and professional first impression.</li>
-                        <li>Resolved guest complaints promptly and professionally, achieving a 95% satisfaction rate.</li>
-                        <li>Coordinated with housekeeping and F&B teams to ensure seamless guest experiences.</li>
-                        <li>Utilized Opera PMS for reservations and guest management.</li>
-                    </ul>
-                </div>
-                <div class="experience-item">
-                    <h3>Tour Guide</h3>
-                    <div class="company">Punjab Tourism Agency</div>
-                    <div class="duration">June 2020 - December 2021</div>
-                    <ul>
-                        <li>Designed and led cultural and historical tours across Punjab, including Lahore Fort and Badshahi Mosque.</li>
-                        <li>Engaged with international tourists, providing insights in fluent English.</li>
-                        <li>Ensured safety and satisfaction for groups of up to 30 guests.</li>
-                        <li>Collaborated with local vendors to enhance tour experiences.</li>
-                    </ul>
-                </div>
-                <div class="experience-item">
-                    <h3>Event Coordinator (Volunteer)</h3>
-                    <div class="company">Local Community Events, Punjab</div>
-                    <div class="duration">March 2019 - May 2020</div>
-                    <ul>
-                        <li>Assisted in organizing weddings and cultural festivals for up to 200 guests.</li>
-                        <li>Managed logistics, including catering and venue setup.</li>
-                        <li>Trained a team of 5 volunteers in event setup and guest management.</li>
-                        <li>Ensured smooth execution through proactive problem-solving.</li>
-                    </ul>
+                <div class="about-text fade-in-up delay-3">
+                    <div class="fresher-badge">Career Objective</div>
+                    <p><strong>My Goal:</strong> To begin my career in the hospitality industry where I can apply my education and passion for service excellence. I aim to contribute to a reputable organization by delivering exceptional guest experiences while developing my skills and growing professionally in the field.</p>
+                    <p><strong>What I Offer:</strong> As a recent graduate, I bring fresh perspectives, enthusiasm, and a strong foundation in hospitality principles. I'm committed to learning quickly, adapting to new challenges, and contributing positively to team dynamics and guest satisfaction.</p>
                 </div>
             </div>
         </div>
@@ -1338,27 +1388,72 @@
     <section id="education" class="education-advanced">
         <div class="container">
             <div class="section-title fade-in-up">
-                <h2>Education & Training</h2>
-                <p>Academic background and professional certifications</p>
+                <h2>Education & Certifications</h2>
+                <p>Academic background completed in 2025</p>
             </div>
             <div class="education-grid fade-in-up">
                 <div class="education-item">
                     <h3>Diploma in Hospitality Management</h3>
                     <div class="institution">Akhuwat College, Lahore</div>
-                    <div class="duration">2018 - 2020</div>
-                    <p>Completed a comprehensive program covering guest relations, hotel operations, and tourism management.</p>
+                    <div class="duration">2023 - 2025</div>
+                    <p>Completed a comprehensive program covering guest relations, hotel operations, tourism management, and event planning. Gained practical knowledge through simulations and case studies.</p>
                 </div>
                 <div class="education-item">
-                    <h3>English Language Proficiency Course</h3>
+                    <h3>English Language Proficiency Certification</h3>
                     <div class="institution">Akhuwat College, Lahore</div>
-                    <div class="duration">2017 - 2018</div>
-                    <p>Achieved advanced fluency in English for professional communication in hospitality settings.</p>
+                    <div class="duration">2024 - 2025</div>
+                    <p>Achieved advanced fluency in English for professional communication in hospitality settings, with focus on customer service interactions and cross-cultural communication.</p>
                 </div>
                 <div class="education-item">
-                    <h3>Certification in Opera PMS</h3>
-                    <div class="institution">Serena Hotel Training Program</div>
-                    <div class="duration">2022</div>
-                    <p>Trained in using Opera Property Management System for efficient hotel operations.</p>
+                    <h3>Hospitality Software Training</h3>
+                    <div class="institution">College Training Program</div>
+                    <div class="duration">2025</div>
+                    <p>Completed training in hospitality software applications including basic Property Management System operations and reservation software.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- College Activities Section -->
+    <section id="experience" class="experience-advanced">
+        <div class="container">
+            <div class="section-title fade-in-up">
+                <h2>College Activities & Projects</h2>
+                <p>Practical experience gained during my studies</p>
+            </div>
+            <div class="experience-grid fade-in-up">
+                <div class="experience-item">
+                    <h3>College Hospitality Committee</h3>
+                    <div class="company">Akhuwat College, Lahore</div>
+                    <div class="duration">2024 - 2025</div>
+                    <ul>
+                        <li>Assisted in organizing and managing college events and guest visits.</li>
+                        <li>Welcomed and guided visitors, providing information about college facilities.</li>
+                        <li>Collaborated with student teams to ensure smooth event execution.</li>
+                        <li>Developed interpersonal skills through direct guest interaction.</li>
+                    </ul>
+                </div>
+                <div class="experience-item">
+                    <h3>Guest Activity Coordinator</h3>
+                    <div class="company">College Cultural Events</div>
+                    <div class="duration">2024</div>
+                    <ul>
+                        <li>Planned and coordinated activities for college cultural festivals.</li>
+                        <li>Engaged with diverse participants, ensuring positive experiences.</li>
+                        <li>Managed logistics for guest participation in various activities.</li>
+                        <li>Received positive feedback for organizational skills and guest engagement.</li>
+                    </ul>
+                </div>
+                <div class="experience-item">
+                    <h3>Tourism Project Team Member</h3>
+                    <div class="company">Academic Project</div>
+                    <div class="duration">2024</div>
+                    <ul>
+                        <li>Researched and developed tourism itineraries for Punjab region.</li>
+                        <li>Collaborated on creating visitor guides for cultural sites.</li>
+                        <li>Presented findings to faculty and peers, receiving excellent evaluation.</li>
+                        <li>Gained insights into tourism operations and guest experience design.</li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -1390,7 +1485,7 @@
                         <div>
                             <h3>Phone</h3>
                             <p>+92 332 199 7374</p>
-                            <small>Mon - Fri, 9:00 AM - 6:00 PM</small>
+                            <small>Available for opportunities</small>
                         </div>
                     </div>
                     <div class="contact-item">
@@ -1400,7 +1495,7 @@
                         <div>
                             <h3>Location</h3>
                             <p>Punjab, Pakistan</p>
-                            <small>Available for international opportunities</small>
+                            <small>Open to relocation opportunities</small>
                         </div>
                     </div>
                 </div>
@@ -1421,6 +1516,7 @@
                                 <option value="hospitality">Hospitality Role</option>
                                 <option value="tourism">Tourism Role</option>
                                 <option value="event">Event Management</option>
+                                <option value="internship">Internship</option>
                                 <option value="other">Other</option>
                             </select>
                         </div>
@@ -1441,7 +1537,7 @@
             <div class="footer-content">
                 <div class="footer-column">
                     <h3>Abdul Samad</h3>
-                    <p>Hospitality & Tourism Professional dedicated to exceptional guest experiences.</p>
+                    <p>Recent Hospitality & Tourism Graduate dedicated to exceptional guest experiences.</p>
                     <div class="social-links">
                         <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
                         <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
@@ -1452,8 +1548,8 @@
                     <ul class="footer-links">
                         <li><a href="#home">Home</a></li>
                         <li><a href="#about">About</a></li>
-                        <li><a href="#experience">Experience</a></li>
                         <li><a href="#education">Education</a></li>
+                        <li><a href="#experience">College Activities</a></li>
                         <li><a href="#contact">Contact</a></li>
                     </ul>
                 </div>
@@ -1593,9 +1689,9 @@
         // Typing effect
         const typedTextSpan = document.getElementById('typed-text');
         const textArray = [
-            "Hospitality Professional",
-            "Tourism Specialist",
-            "Guest Relations Expert",
+            "Hospitality Graduate",
+            "Guest Relations Enthusiast",
+            "Tourism Professional",
             "Event Coordinator"
         ];
         let textArrayIndex = 0;
